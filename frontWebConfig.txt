@@ -1,0 +1,334 @@
+<?xml version="1.0"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  -->
+<configuration>
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false"/>
+    <section name="ImageSection" type="Zeon.Core.Configuration.ImageSection" allowDefinition="Everywhere"/>
+    <section name="EmailSection" type="Zeon.Core.EmailConfiguration.EmailSection" allowDefinition="Everywhere"/>
+    <section name="ErrorSection" type="Zeon.Core.ErrorCodeSettings.ErrorSection" allowDefinition="Everywhere"/>
+    <section name="EffectsSection" type="Zeon.Core.Configuration.EffectsSection" allowDefinition="Everywhere"/>
+    <sectionGroup name="elmah">
+      <section name="security" requirePermission="false" type="Elmah.SecuritySectionHandler, Elmah"/>
+      <section name="errorLog" requirePermission="false" type="Elmah.ErrorLogSectionHandler, Elmah"/>
+      <section name="errorMail" requirePermission="false" type="Elmah.ErrorMailSectionHandler, Elmah"/>
+      <section name="errorFilter" requirePermission="false" type="Elmah.ErrorFilterSectionHandler, Elmah"/>
+    </sectionGroup>
+    <section name="glimpse" type="Glimpse.Core.Configuration.Section, Glimpse.Core"/>
+  </configSections>
+  <ImageSection>
+    <ImageSettings>
+      <add Name="UploadImage" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Photos/" DefaultUrl="http://localhost:8082/UserPhoto/{0}/Photos/" DefaultFolder="Original" ImageExtension=".jpg,.png" SaveAction="/Services/GetUploadImage" ImageSizeLimit="1MB" Thumbnail="150x150_Thumbnail_90,1024x1024_Standard_95"/>
+      <add Name="UploadPrintImage" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Photos/Print/" DefaultFolder="Print" ImageExtension=".jpg,.png" ImageSizeLimit="20MB"/>
+      <add Name="EffectImage" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Photos/Output/" DefaultFolder="Standard" ImageExtension=".jpg,.png" ImageSizeLimit="20MB" Thumbnail="150x150_Thumbnail_90"/>
+      <add Name="UploadAudio" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Audio/" DefaultFolder="Audio" ImageExtension=".mp3,.wav,.ogg" SaveAction="/Services/GetUploadedAudio" ImageSizeLimit="20MB"/>
+      <add Name="CustomizedImage" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Customize/" DefaultUrl="http://localhost:8082/UserPhoto/{0}/Customize/" ImageExtension=".png" SaveAction="/Services/GetUploadImage" ImageSizeLimit="1MB" Thumbnail="200x200_Thumbnail_90,1024x1024_Standard_95"/>
+      <add Name="ProductImage" DefaultPath="D:/Images/UserImages/{0}/{1}/Products/Original/" DefaultUrl="//localhost:8081/UserImages/{0}/{1}/Products/" DefaultFolder="Original" ImageExtension=".jpg,.gif,.png,.bmp,.jpeg" DefaultImage="/UserImages/no_image_icon.png" ImageSizeLimit="4MB" Thumbnail="100x100_Thumbnail_90,1024x1024_Standard_95" DefaultViewAreaThumbnail="Thumbnail" DefaultVariantThumbnail="Thumbnail" DeafultProductThumbnail="Thumbnail"/>
+      <add Name="DesignImage" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Customize/Standard/" DefaultFolder="Original" ImageExtension=".jpg,.png" ImageSizeLimit="1MB" Thumbnail="150x150_Thumbnail_90" DefaultTemplateThumbnail="Thumbnail"/>
+      <add Name="Scene7UGCServerSetting" UploadTokenUrl="https://s7ugc1.scene7.com/ugc/{0}?op=get_uploadtoken" UploadImageUrl="https://s7ugc1.scene7.com/ugc/{3}?op=upload"/>
+      <add Name="FrontImageStorage" Scene7Server="false"/>
+      <add Name="CroppedImage" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Photos/CroppedImages/" DefaultUrl="//localhost:8082/UserPhoto/{0}/Photos/CroppedImages/" DefaultFolder="CroppedImages" ImageExtension=".png"/>
+      <add Name="TempImagePath" DefaultPath="/MyTemp/"/>
+      <add Name="WebsiteImages" DefaultPath="D:/Images/UserImages/{0}/{1}/Website/" DefaultUrl="//localhost:8081/UserImages/{0}/{1}/Website/" DefaultFolder="Original" ImageExtension=".jpg,.gif,.png,.bmp,.jpeg" DefaultImage="/UserImages/no_image_icon.png" ImageSizeLimit="4MB" DeafultProductThumbnail="Thumbnail" Thumbnail="100x100_Thumbnail_90"/>
+      <add Name="Clipart" DefaultPath="D:/Images/UserImages/{0}/{1}/Cliparts/" DefaultFolder="Original"/>
+      <add Name="ClipartPrintImage" DefaultPath="D:/Images/UserImages/{0}/{1}/Cliparts/" DefaultUrl="//localhost:8081/UserImages/{0}/{1}/Cliparts/" DefaultFolder="Print"/>
+      <add Name="Font" DefaultPath="D:/Images/UserImages/{0}/{1}/Fonts/" DefaultUrl="//localhost:8081/UserImages/{0}/{1}/Fonts/" ImageExtension=".ttf,.svg,.woff,.eot" ImageSizeLimit="1mb"/>
+      <add Name="PublicFont" DefaultPath="//localhost:3505/PublicFonts/" ImageExtension=".ttf,.svg,.woff,.eot" ImageSizeLimit="1mb"/>
+      <add Name="OrderSpecificationXMLPath" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Customize/OrderSpecification/"/>
+      <add Name="PDFFilePath" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Customize/PDF/"/>
+      <add Name="BMPFilePath" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Customize/BMP/"/>
+      <add Name="AdvancePDFFilePath" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Customize/AdvancePDF/"/>
+      <add Name="SaveSVG" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Customize/SVG/"/>
+      <add Name="OldSVGPath" DefaultPath="D:/DesignerImages/UserPhoto/{0}/{1}/SVG/"/>
+      <add Name="CustomJSPath" DefaultPath="/CustomJS/"/>
+      <add Name="SharedImage" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Customize/SharedImage/" DefaultUrl="http://localhost:8082/UserPhoto/{0}/Customize/SharedImage/" DefaultFolder="Original" ImageExtension=".jpg,.png" Thumbnail="150x150_Thumbnail_90,1024x1024_Standard_95"/>
+      <add Name="ThirdPartyImage" DefaultPath="D:/DesignerImages/UserPhoto/{0}/Photos/" DefaultFolder="Original" ImageExtension=".jpg,.png" Thumbnail="150x150_Thumbnail_90,1024x1024_Standard_95"/>
+      <add Name="TemplateGroupThumbnailImage" DefaultUrl="http://localhost:1534/UserImages/{0}/{1}/{2}/TemplateGroup/"/>
+      <add Name="DesignGalleryUploadedImage" DefaultPath="D:/Images/UserImages/{0}/{1}/Cliparts/DesignGalleryImages/" DefaultUrl="http://localhost:8081/UserImages/{0}/{1}/Cliparts/DesignGalleryImages/" DefaultFolder="Original" Thumbnail="100x100_Thumbnail_90,1024x1024_Standard_95" DefaultImage="/UserImages/no_image_icon.png" ImageSizeLimit="4MB"/>
+      <add Name="DesignGalleryCustomizedImage" DefaultFolder="Original" DefaultPath="D:/Images/UserImages/{0}/{1}/DesignGalleryCustomizeImage/" DefaultUrl="http://localhost:8081/UserImages/{0}/{1}/DesignGalleryCustomizeImage/" ImageExtension=".png" ImageSizeLimit="1MB" Thumbnail="200x200_Thumbnail_90,1024x1024_Standard_95"/>
+      <add Name="DesignGalleryViewImage" DefaultFolder="Original" DefaultPath="D:/Images/UserImages/{0}/{1}/DesignGalleryViewImage/" DefaultUrl="http://localhost:8081/Images/UserImages/{0}/{1}/DesignGalleryViewImage/" ImageExtension=".png" ImageSizeLimit="1MB" Thumbnail="200x200_Thumbnail_90,1024x1024_Standard_95"/>
+      <add Name="TemplateDesignImage" DefaultPath="D:/Images/UserImages/{0}/{1}/Template/Design/" DefaultUrl="//localhost:8081/UserImages/{0}/{1}/Template/Design/" DefaultFolder="Original" ImageExtension=".jpg,.png" ImageSizeLimit="1MB" Thumbnail="150x150_Thumbnail_90" DefaultTemplateThumbnail="Thumbnail"/>
+      <add Name="AttributeImage" DefaultPath="D:/Images/UserImages/{0}/{1}/Attributes/Original/" DefaultUrl="//localhost:8081/UserImages/{0}/{1}/Attributes/" DefaultFolder="Original" DefaultAttributeThumbnail="Thumbnail"/>
+    </ImageSettings>
+  </ImageSection>
+  <EmailSection>
+    <EmailSettings>
+      <add name="SendEmail" senderID="noreply@artifilabs.com" senderPassword="artifi@123" hostName="smtp.gmail.com" isEnableSsl="true" isHTMLBody="true" fromAddressDisplayName="ARTIFI-LABS" smtpPort="587" sendEmail="true" emailSubject="Preview Design"/>
+      <add name="SendEmailForPDF" senderID="noreply@artifilabs.com" senderPassword="artifi@123" hostName="smtp.gmail.com" isEnableSsl="true" isHTMLBody="true" fromAddressDisplayName="ARTIFI-LABS" smtpPort="587" sendEmail="true" emailSubject="PDF Exception On Dev Server" To="jayant.patil@mrrsoft.com"/>
+    </EmailSettings>
+  </EmailSection>
+  <ErrorSection>
+    <ErrorCodeSettings>
+      <add name="UserPhotoDimensionError" errorcode="101" description="To check height and width of uploaded image in case of masterlock."/>
+    </ErrorCodeSettings>
+  </ErrorSection>
+  <EffectsSection configSource="Effects.config"/>
+  <connectionStrings>
+    <add name="Connection" connectionString="Data Source=mssvr029\sqlserver2008;Initial Catalog=ConfiguratorQADatabase;user id=sa;password=mrr@123"
+      providerName="System.Data.SqlClient"/>
+    <add name="zConfiguratorEntities"
+      connectionString="metadata=res://*/zConfiguratorModel.csdl|res://*/zConfiguratorModel.ssdl|res://*/zConfiguratorModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=mssvr029\sqlserver2008;initial catalog=ConfiguratorQADatabase;user id=sa;password=mrr@123;multipleactiveresultsets=True;application name=EntityFramework&quot;"
+      providerName="System.Data.EntityClient"/>
+  </connectionStrings>
+  <!--<connectionStrings>
+    <add name="Connection" connectionString="Data Source=MSSVR006;Initial Catalog=ConfiguratorDev;user id=sa;password=mrr@123" providerName="System.Data.SqlClient"/>
+    <add name="zConfiguratorEntities" connectionString="metadata=res://*/zConfiguratorModel.csdl|res://*/zConfiguratorModel.ssdl|res://*/zConfiguratorModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=MSSVR006;initial catalog=ConfiguratorDev;user id=sa;password=mrr@123;multipleactiveresultsets=True;application name=EntityFramework&quot;" providerName="System.Data.EntityClient"/>
+  </connectionStrings>-->
+  <!--<connectionStrings>
+   <add name="Connection" connectionString="Data Source=65.61.173.243;Initial Catalog=StageProdAdminDB;user id=sa;password=Arf!t!bd%7" providerName="System.Data.SqlClient" />
+   <add name="zConfiguratorEntities" connectionString="metadata=res://*/zConfiguratorModel.csdl|res://*/zConfiguratorModel.ssdl|res://*/zConfiguratorModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=65.61.173.243;initial catalog=StageProdAdminDB;user id=sa;password=Arf!t!bd%7;multipleactiveresultsets=True;application name=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+ </connectionStrings>-->
+
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework"/>
+  </entityFramework>
+  <log4net>
+    <root>
+      <level value="All"/>
+    </root>
+  </log4net>
+  <appSettings>
+    <add key="webpages:Version" value="3.0.0.0"/>
+    <add key="webpages:Enabled" value="false"/>
+    <add key="PreserveLoginUrl" value="true"/>
+    <add key="ClientValidationEnabled" value="true"/>
+    <add key="UnobtrusiveJavaScriptEnabled" value="true"/>
+    <add key="log4net.Config" value="Log.config"/>
+    <add key="FileName" value="Log\ArtifiFront_"/>
+    <add key="DatePattern" value="yyyy-MM-dd'.log'"/>
+    <add key="MaxSizeRollBackups" value="30"/>
+    <!--<add key="MaximumFileSize" value="10KB" />-->
+    <add key="ConversionPattern" value="%newlineDate - %date{dd MMMM yyyy, HH:mm:ss} %newlineTimestamp - %timestamp ms%newlineLevel - %level %newlineLogger - %logger %newline%message%newline"/>
+    <add key="CommandText" value="INSERT INTO Log ([Date],[Thread],[Level],[Logger],[Message]) VALUES (@log_date, @thread, @log_level, @logger, @message)"/>
+    <add key="ConnectionType" value="System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+    <add key="Date" value="@log_date"/>
+    <add key="Thread" value="@thread"/>
+    <add key="Level" value="@log_level"/>
+    <add key="Logger" value="@logger"/>
+    <add key="Message" value="@message"/>
+    <add key="IsDebugger" value="true"/>
+    <add key="aspnet:MaxJsonDeserializerMembers" value="9000000"/>
+    <add key="Scene7Path" value="http://s7d7.scene7.com/is/agm/zeon/"/>
+    <add key="AuthorizeClientFilter" value="Off"/>
+    <add key="BuildNumber" value="Build_2014-05-16.1"/>
+    <add key="ShowS7Url" value="false"/>
+    <add key="FacebookAppId" value="1635063630072595"/>
+    <add key="PoptropicaImagePath" value="http://ext2.poptropica.com/shop/php/fetchimage.php?password=brand-xpand"/>
+    <add key="DropboxAppId" value="0fiwdhxawhjf4ot"/>
+    <add key="LatestContraintJsonVersion" value="1.0.16"/>
+    <add key="LatestDesignJsonVersion" value="1.0.7"/>
+    <add key="LatestOrderSpecificationVersion" value="1.0.0"/>
+    <add key="ParametarHeaderKey" value="personalization"/>
+    <add key="IsUrlEncodingEnable" value="true"/>
+    <add key="IsProductionDomain" value="false"/>
+    <add key="EmailAttachmentExtensions" value="docx,txt,jpg,png,pdf"/>
+    <add key="S3UploadFileSize" value="5368709120"/>
+    <add key="AmazonS3Policy" value="{expiration:{0}T00:00:00Z}"/>
+    <add key="EmailSubject" value="Preview Design"/>
+    <add key="NameFormatForEmailDesign" value="Email_{0}_{1}"/>
+    <!--All Folder Name and Image Size-->
+    <add key="DefaultImageSize" value="150x150_Thumbnail_90,1024x1024_Standard_95"/>
+    <add key="DefaultThumbnailSize" value="150x150_Thumbnail_90"/>
+    <add key="DefaultStandardSize" value="1024x1024_Standard_95"/>
+    <add key="OriginalFolderName" value="Original/"/>
+    <add key="ThumbnailFolderName" value="Thumbnail/"/>
+    <add key="StandardFolderName" value="Standard/"/>
+    <add key="DisplayFolderName" value="Display/"/>
+    <!--Add the Changeable Path here-->
+    <add key="AdminImagesPath" value="D:/Images"/>
+    <add key="FrontImagesPath" value="D:/DesignerImages"/>
+    <add key="FrontImagePathFolder" value="{0}/UserPhoto/{1}"/>
+    <add key="AdminImagePathFolder" value="{0}/UserImages/{1}/{2}"/>
+    <add key="AdminDomainIp" value="http://localhost:3505"/>
+    <add key="FrontDomainIp" value="//localhost:1534"/>
+    <add key="ImagesDomainIp" value="//localhost:8081"/>
+    <add key="UserPhotoDomainIp" value="//localhost:8082"/>
+    <add key="fontCssUrl" value="http://localhost:1534/Designer/Services/GetFontCss?"/>
+    <add key="FontUrl" value="http://localhost:3505/PublicFonts/"/>
+    <add key="AllowedDomainOrIp" value="localhost:20177,::1,http://localhost:3505"/>
+    <add key="InkScapeExePath" value="C:/Program Files (x86)/inkscape/inkscape.exe"/>
+    <add key="ImageMagicExecutablePath" value="C:/Program Files/ImageMagick-6.9.1-Q16-HDRI/convert.exe"/>
+    <add key="ImageMagicIdentifyPath" value="C:/Program Files/ImageMagick-6.9.1-Q16-HDRI/identify.exe"/>
+    <add key="ImageMagicIsTransparentImage" value=" -format %[opaque],%A {0}"/>
+    <add key="VectorImageProperties" value=" -format %x,%[colorspace],%w,%h {0}[0]"/>
+    <add key="ConvertWithoutProfile" value="-density {0}   {1}[0]  -resize 50%  {2}"/>
+    <add key="ConvertWithProfile" value="-density {0}   {1}  -profile 'd:\USWebCoatedSWOP.icc' -profile 'd:\sRGB Color Space Profile.icm' -resize 50% {2}"/>
+    <add key="DefaultDpi" value="300"/>
+    <add key="VectoerToRasterImage" value="convert -density {0} {1}[0] -profile E:\IMGM\USWebCoatedSWOP.icc -profile E:\IMGM\sRGB_Color_Space_Profile.icm -bordercolor white -border 1x1 -alpha set -fuzz 20% -fill none -floodfill +0+0 white -shave 1x1 png32:{2}"/>
+    <add key="RgbEpsToRgbPng" value="convert -density {0} -colorspace sRGB {1} PNG32:{2}"/>
+    <!--for converting svg to png-->
+    <add key="ConvertSvgToPng" value="convert -background none {0} {1}"/>
+    <add key="ConvertTifToPng" value="convert {0}[0] {1}"/>
+    <!--On production make this flag true-->
+    <!-- PDF setting-->
+    <add key="LogFilePath" value="D:/Share/"/>
+    <add key="IsExceptionMailForPdf" value="true"/>
+    <add key="ExceptionEmailTemplate" value="D:\Websites\Artifi\QA\EmailTemplates\ExceptionEmailTemplate.htm"/>
+    <!--Launching URL UserId Validation-->
+    <add key="WebsiteId" value="29"/>
+    <!--Temparay path for move images old struchre to new-->
+    <add key="TempAdminImagePath" value="D:/Images/UserImages/"/>
+    <add key="TempFrontImagePath" value="D:/DesignerImages/UserPhoto/"/>
+    <add key="TempFrontDomain" value="//localhost:1534"/>
+    <add key="TempAdminImageDomain" value="//localhost:8081"/>
+    <add key="OldSVGPath" value="D:/DesignerImages/UserPhoto/{0}/{1}/SVG/"/>
+    <add key="ImageRuleXMLFilePath" value="D:/DesignerImages/UserPhoto/SVGTemp/ImageRule2.txt"/>
+    <add key="ImageRuleXMLDestinationFilePath" value="D:/DesignerImages/UserPhoto/SVGTemp/AllUpdateUserPhotoImageRule.xml"/>
+    <add key="UserImageRuleXMLFilePath" value="D:/DesignerImages/UserPhoto/SVGTemp/ImageRule3.txt"/>
+    <add key="UserImageRuleXMLDestinationFilePath" value="D:/DesignerImages/UserPhoto/SVGTemp/AllUpdateUserImageRule.xml"/>
+    <add key="LiveComapnyIds" value="3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20"/>
+    <add key="AllowWebsiteIds" value="29"/>
+    <!-- Media formatter Type for for web api image response size -->
+    <add key="DesignImageMediaType" value="image/jpg"/>
+
+    <!--<add key="EnableOptimization" value="true"/>-->
+  </appSettings>
+  <!--
+    For a description of web.config changes see http://go.microsoft.com/fwlink/?LinkId=235367.
+
+    The following attributes can be set on the <httpRuntime> tag.
+      <system.Web>
+        <httpRuntime targetFramework="4.5.1" />
+      </system.Web>
+  -->
+  <system.web>
+    <httpRuntime targetFramework="4.5" maxRequestLength="1073741824" requestLengthDiskThreshold="1073741824"/>
+    <compilation debug="true" targetFramework="4.5.2"/>
+    <pages>
+      <namespaces>
+        <add namespace="System.Web.Helpers"/>
+        <add namespace="System.Web.Mvc"/>
+        <add namespace="System.Web.Mvc.Ajax"/>
+        <add namespace="System.Web.Mvc.Html"/>
+        <add namespace="System.Web.Routing"/>
+        <add namespace="System.Web.WebPages"/>
+      </namespaces>
+    </pages>
+    <!-- Glimpse: This can be commented in to add additional data to the Trace tab when using WebForms
+        <trace writeToDiagnosticsTrace="true" enabled="true" pageOutput="false"/> -->
+    <httpModules>
+      <add name="ErrorLog" type="Elmah.ErrorLogModule, Elmah"/>
+      <add name="ErrorMail" type="Elmah.ErrorMailModule, Elmah"/>
+      <add name="ErrorFilter" type="Elmah.ErrorFilterModule, Elmah"/>
+      <add name="Glimpse" type="Glimpse.AspNet.HttpModule, Glimpse.AspNet"/>
+    </httpModules>
+    <httpHandlers>
+      <add path="glimpse.axd" verb="GET" type="Glimpse.AspNet.HttpHandler, Glimpse.AspNet"/>
+    </httpHandlers>
+  </system.web>
+  <system.webServer>
+    <security>
+      <requestFiltering>
+        <requestLimits maxAllowedContentLength="1073741824"/>
+      </requestFiltering>
+    </security>
+    <httpProtocol>
+      <customHeaders>
+        <add name="Access-Control-Allow-Origin" value="*"/>
+        <add name="Access-Control-Allow-Headers" value="*"/>
+        <add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE"/>
+      </customHeaders>
+    </httpProtocol>
+    <modules runAllManagedModulesForAllRequests="true">
+      <remove name="WebDAVModule"/>
+      <add name="Glimpse" type="Glimpse.AspNet.HttpModule, Glimpse.AspNet" preCondition="integratedMode"/>
+    </modules>
+    <validation validateIntegratedModeConfiguration="false"/>
+    <handlers>
+      <add name="ELMAH" verb="POST,GET,HEAD,DELETE" path="elmah.axd" type="Elmah.ErrorLogPageFactory, Elmah" preCondition="integratedMode"/>
+      <remove name="WebDAV"/>
+      <remove name="ExtensionlessUrlHandler-Integrated-4.0"/>
+      <remove name="OPTIONSVerbHandler"/>
+      <remove name="TRACEVerbHandler"/>
+      <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0"/>
+      <add name="Glimpse" path="glimpse.axd" verb="GET" type="Glimpse.AspNet.HttpHandler, Glimpse.AspNet" preCondition="integratedMode"/>
+    </handlers>
+    <defaultDocument>
+      <files>
+        <add value="index.cshtml"/>
+      </files>
+    </defaultDocument>
+    <staticContent>
+      <mimeMap fileExtension=".cshtml" mimeType="text/html"/>
+      <!--<mimeMap fileExtension=".json" mimeType="json"/>-->
+    </staticContent>
+  </system.webServer>
+  <elmah>
+    <!--
+        See http://code.google.com/p/elmah/wiki/SecuringErrorLogPages for 
+        more information on remote access and securing ELMAH.
+    -->
+    <security allowRemoteAccess="false"/>
+  </elmah>
+  <location path="elmah.axd" inheritInChildApplications="false">
+    <system.web>
+      <httpHandlers>
+        <add verb="POST,GET,HEAD,DELETE" path="elmah.axd" type="Elmah.ErrorLogPageFactory, Elmah"/>
+      </httpHandlers>
+      <!-- 
+        See http://code.google.com/p/elmah/wiki/SecuringErrorLogPages for 
+        more information on using ASP.NET authorization securing ELMAH.
+  
+      <authorization>
+        <allow roles="admin" />
+        <deny users="*" />  
+      </authorization>
+      -->
+    </system.web>
+    <!-- <system.webServer>
+      <handlers>
+        <add name="ELMAH" verb="POST,GET,HEAD" path="elmah.axd" type="Elmah.ErrorLogPageFactory, Elmah" preCondition="integratedMode" />
+      </handlers>
+      <httpProtocol>
+        <customHeaders>
+          <add name="Access-Control-Allow-Origin" value="*" />
+          <add name="Access-Control-Allow-Headers" value="*" />
+          <add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE" />
+        </customHeaders>
+      </httpProtocol>
+    </system.webServer>
+     -->
+  </location>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Http" publicKeyToken="31bf3856ad364e35" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Net.Http.Formatting" publicKeyToken="31bf3856ad364e35" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Autofac" publicKeyToken="17863af14b0044da" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-4.2.1.0" newVersion="4.2.1.0"/>
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd">
+    <!-- 
+          For more information on how to configure Glimpse, please visit http://getglimpse.com/Help/Configuration
+          or access {your site}/Glimpse.axd for even more details and a Configuration Tool to support you. 
+      -->
+  </glimpse>
+</configuration>

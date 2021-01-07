@@ -1,0 +1,2 @@
+C:\wamp\www\Circle Text Performace Check\obj\x86\Debug\PathTextPoc.csprojResolveAssemblyReference.cache
+C:\wamp\www\Circle Text Render On Arcs\obj\x86\Debug\PathTextPoc.csprojResolveAssemblyReference.cache

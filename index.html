@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Fabric Functionality Test</title>
+<link rel="stylesheet" href="bootstrap.css" />
+<link  rel="stylesheet"  href="styles.css"  />
+
+<script type="application/javascript" defer src="jquery.js" ></script>
+<!-- Merged Changes with new fabric -->
+<script type="application/javascript" defer src="class.js"></script>
+<script type="application/javascript" defer src="fabric.js" ></script>
+<script type="application/javascript" defer src="fabricExtension.js" ></script>
+<script type="application/javascript" defer src="Object.js" ></script>
+<script type="application/javascript" defer src="sample.js" ></script>
+
+</head>
+
+<body>
+    <!--<h1>Path Text Testing</h1>-->
+    <div class="wrapper">
+        <!---->
+        <div class="left-col">
+            <canvas id="testCan" width="700" height="700"> </canvas>
+        </div>
+        <div class="right-col">
+            <div class="block">
+                <button id="addCircleText" class="btn btn-success">Add Circle Text</button>
+                <button id="addPathText" class="btn btn-success">Add Path Text</button>
+                <button id="addAudio" class="btn btn-success">Add Audio</button>
+				<button id="addText" class="btn btn-success">Add Text</button>
+            </div>
+            <div class="alert alert-info">Total Widget Count : <span id="widgetCount"></span></div>
+            <div id="propertiesPanel">
+                <div class="block">
+                    <label for="changeText">Text : </label>
+                    <input class="" name="changeText" id="changeText" value="ABCDEFGHIJKLMNOPQRSTUV" />
+
+                </div>
+                <div id="pathTextProperties" class="block">
+                    <label for="shapeType">Shape Type : </label>
+                    <select id="shapeType" class="">
+                        <option value="Circle">Circle</option>
+						<option value="Circle1">Circle1</option>
+                        <!--<option value="CustomCircle" selected="selected">Custom Circle</option>-->
+                        <option value="Hen">Hen</option>
+                        <option value="Curve1">Curve 1</option>
+                        <option value="Smiley">Smiley</option>
+                        <option value="Curve3">Curve 3</option>
+                        <option value="Line1">Line 1</option>
+                        <option value="Line2">Line 2</option>
+                        <option value="box">Box</option>
+                        <option value="arc">Arc</option>
+                        <option value="arc1">Arc 1</option>
+                        <option value="arc2">Arc 2</option>
+                        <option value="arc3">Arc 3</option>
+                        <option value="arc4">Arc 4</option>
+                        <option value="arc5">Arc 5</option>
+						<option value="polygon">polygon</option>
+						<option value="AnticlockwiseCircle">AnticlockwiseCircle</option>
+                    </select>
+                </div>
+                <div id="circleTextProperties">
+                    <div class="block">
+                        <label for="changeRadius">Radius : </label>
+                        <input type="text" name="changeRadius" id="changeRadius" value="200">
+                    </div>
+                   <div class="block">
+                        <label for="startAngle">Start Angle (Range -359 to 359): </label>
+                        <input type="text" name="startAngle" id="startAngle" value="0">
+                    </div>
+                    <div class="block">
+                        <label for="endAngle">End Angle (Range -359 to 359) : </label>
+                        <input type="text" name="endAngle" id="endAngle" value="360">
+                    </div>
+
+                    <div class="block">
+                        <label for="Direction">Direction : </label>
+                        <select id="Direction" class="">
+                            <option value="ClockWise">ClockWise</option>
+                            <option value="AntiClockWise">Anti-ClockWise</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="block">
+                    <label for="fontFamily">Font Family : </label>
+                    <select id="fontFamily" class="">
+                        <option value="Consolas">System-Consolas</option>
+                        <option value="Courier">System-Courier</option>
+                        <option value="Courier New">System-Courier New</option>
+                        <option value="Lucida Console">System-Lucida Console</option>
+                        <option value="Cambria Math">System-Cambria Math</option>
+                        <option value="Marlett">System-Marlett</option>
+                        <option value="Arial">System-Arial</option>
+                        <option value="Alex Brush_R">Custom-Alex Brush Regular</option>
+                        <option value="Bellota_B">Custom-Bellota_B</option>
+                        <option value="Bellota_BI">Custom-Bellota_BI</option>
+                        <option value="Bellota_I">Custom-Bellota_I</option>
+                        <option value="Bellota_R">Custom-Bellota_R</option>
+                        <option value="GhostKid AOE_R">GhostKid AOE_R</option>
+                        <option value="Calligraffiti_R">Custom-Calligraffiti_R</option>
+                        <option value="Hammersmith One_R">Custom-Hammersmith One_R</option>
+                        <option value="Impact_R">Custom-Impact_R</option>
+                        <option value="Kaushan Script_R">Custom-Kaushan Script_R</option>
+                    </select>
+                </div>
+                <div class="block">
+                    <label for="textAlign">Alignment : </label>
+                    <select id="textAlign" class="">
+                        <option value="left">Left</option>
+                        <option value="center">Center</option>
+                        <option value="right">Right</option>
+                        <option value="justify">Justify</option>
+                    </select>
+                </div>
+                <div class="checkbox">
+                    <label><input id="isScalable" type="checkbox" value=""/>Auto Fontsize</label>
+                </div>
+                <div class="block" id = "fontSizeBlock">
+                    <label for="fontSize">Font Size : </label>
+                    <select id="fontSize" class="">
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30" selected="selected">30</option>
+                        <option value="35">35</option>
+                        <option value="40">40</option>
+                        <option value="45">45</option>
+                        <option value="50">50</option>
+                        <option value="55">55</option>
+                    </select>
+                </div>
+                <div class="block">
+                    <label for="changeFontColor">Font Color : </label>
+                    <input type="color" name="changeFontColor" id="changeFontColor" />
+                </div>
+                <div class="block">
+                    <label for="removeChar">Remove Extra Character : </label>
+                    <select id="removeChar" class="">
+                        <option value="removeExtraChar">Angle Detection</option>
+                        <option value="wantTextPathWithLessOverlap">Edge Detection</option>
+                    </select>
+                </div>
+                <div class="block">
+                    <label for="exportSVG">Export SVG : </label>
+                    <button id="exportSVG" class="btn btn-danger" onclick="exportCanvasToSVG()">SVG</button>
+                </div>
+                <div class="block">
+                    <label for="exportJSON">Export JSON : </label>
+                    <button id="exportJSON" class="btn btn-danger" onclick="exportCanvasToJSON()">JSON</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
