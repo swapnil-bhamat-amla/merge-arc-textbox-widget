@@ -1,13 +1,13 @@
 {
   "name": "merge-arc-textbox-widget",
   "version": "1.0.0",
-  "description": "A modified version of fabricjs Text Function to allow curved text.",
+  "description": "A modified version of fabricJs Text Function to allow curved text.",
   "main": "Object.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "lite-server"
   },
   "keywords": [],
-  "author": "",
+  "author": "Swapnil Bhamat",
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.6.1"
